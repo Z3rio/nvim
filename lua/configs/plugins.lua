@@ -1,5 +1,5 @@
 local M = {
-    -- THEME/UI
+    -- Theme/UI
     {
         "catppuccin/nvim",
         lazy = false,
@@ -37,7 +37,22 @@ local M = {
         end,
     },
 
-    -- UTILS
+    -- Tracking
+    {
+        "wakatime/vim-wakatime",
+        lazy = false,
+    },
+    {
+        "Z3rio/presence.nvim",
+
+        lazy = false,
+
+        config = function()
+            require("configs.discord")
+        end,
+    },
+
+    -- Utils
     {
         "folke/which-key.nvim",
         keys = { "<leader>", "<c-r>", "<c-w>", "\"", "'", "`", "c", "v", "g" },
