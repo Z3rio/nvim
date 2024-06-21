@@ -2,7 +2,6 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
-print("paths", vim.json.encode(require("nvchad_customdata").getPaths()))
 local LspOpts = {
     lua_ls = {
         settings = {
@@ -109,6 +108,8 @@ lsp.set_preferences({
         info = 'I'
     }
 })
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }

@@ -92,7 +92,6 @@ require("catppuccin").setup({
     },
     color_overrides = {},
     highlight_overrides = {
-        ---@param cp palette
         all = function(cp)
             return {
                 -- For base configs
@@ -167,9 +166,7 @@ require("catppuccin").setup({
                 },
 
                 -- For treesitter
-                ["@keyword.return"] = { fg = cp.pink, style = clear },
-                ["@error.c"] = { fg = cp.none, style = clear },
-                ["@error.cpp"] = { fg = cp.none, style = clear },
+                ["@keyword.return"] = { fg = cp.pink, style = { "bold", "underline" } },
             }
         end,
     },

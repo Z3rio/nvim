@@ -33,7 +33,7 @@ local M = {
         "lewis6991/gitsigns.nvim",
         ft = { "gitcommit", "diff" },
         init = function()
-            require("configs.gitsigns")
+            require("configs.git_signs")
         end,
     },
 
