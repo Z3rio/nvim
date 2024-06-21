@@ -149,30 +149,54 @@ local M = {
 
             -- Snippets
             'L3MON4D3/LuaSnip',
-            'rafamadriz/friendly-snippets',
-            {
-                "windwp/nvim-ts-autotag",
-
-                config = function()
-                    require("nvim-treesitter.configs").setup({
-                        autotag = {
-                            enable = true,
-                        },
-                    })
-                end,
-
-                dependencies = {
-                    "nvim-treesitter/nvim-treesitter",
-                },
-
-                lazy = false,
-            },
+            'rafamadriz/friendly-snippets'
         },
         branch = 'v3.x',
         config = function()
             require("configs.lsp")
         end,
-    }
+    },
+    {
+        "windwp/nvim-ts-autotag",
+
+        config = function()
+            require('nvim-ts-autotag').setup({
+                opts = {
+                    -- Defaults
+                    enable_close = true,        -- Auto close tags
+                    enable_rename = true,       -- Auto rename pairs of tags
+                    enable_close_on_slash = false -- Auto close on trailing </
+                },
+                -- Also override individual filetype configs, these take priority.
+                -- Empty by default, useful if one of the "opts" global settings
+                -- doesn't work well in a specific filetype
+                per_filetype = {
+                    ["html"] = {
+                        enable_close = false
+                    }
+                }
+            })
+        end,
+
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        },
+
+        lazy = false,
+    },
+    {
+        "windwp/nvim-autopairs",
+        opts = {
+            fast_wrap = {},
+            disable_filetype = { "TelescopePrompt", "vim" },
+        },
+        config = function(_, opts)
+            require("nvim-autopairs").setup(opts)
+
+            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+            require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        end,
+    },
 }
 
 return M
