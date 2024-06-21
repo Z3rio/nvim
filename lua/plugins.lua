@@ -103,12 +103,6 @@ local M = {
         end
     },
     {
-        "theprimeagen/harpoon",
-        config = function()
-            require("configs.harpoon")
-        end
-    },
-    {
         "theprimeagen/refactoring.nvim",
         config = function()
             require("configs.refactoring")
