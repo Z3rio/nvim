@@ -244,6 +244,7 @@ M.list = {
 }
 
 M.setup = function()
+    vim.api.nvim_set_keymap("x", "p", "pgvy", {})
     for i, v in pairs(M.list) do
         for i2, v2 in pairs(v) do
             vim.keymap.set(i, i2, v2[1], {
