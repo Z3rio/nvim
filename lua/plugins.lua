@@ -53,6 +53,7 @@ local M = {
         config = function()
             comment.setup()
         end,
+        dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" }
     },
     {
         "max397574/better-escape.nvim",
