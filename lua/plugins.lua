@@ -32,21 +32,6 @@ local M = {
         end,
     },
 
-    -- Tracking
-    {
-        "wakatime/vim-wakatime",
-        lazy = false,
-    },
-    {
-        "Z3rio/presence.nvim",
-
-        lazy = false,
-
-        config = function()
-            require("configs.discord")
-        end,
-    },
-
     -- Utils
     {
         "folke/which-key.nvim",
@@ -75,6 +60,10 @@ local M = {
         config = function()
             require("better_escape").setup()
         end,
+    },
+    {
+        "wakatime/vim-wakatime",
+        lazy = false,
     },
 
     -- LSP
