@@ -1,3 +1,5 @@
+local whichkey = require("configs.whichkey")
+local comment = require("configs.comment")
 local M = {
     -- Theme/UI
     {
@@ -12,15 +14,8 @@ local M = {
     'nvim-tree/nvim-web-devicons',
     {
         "NvChad/nvim-colorizer.lua",
-        init = function()
-            require("utils").lazy_load("nvim-colorizer.lua")
-        end,
-        config = function(_, opts)
-            require("colorizer").setup(opts)
-
-            vim.defer_fn(function()
-                require("colorizer").attach_to_buffer(0)
-            end, 0)
+        config = function()
+            require("configs.colorizer")
         end,
     },
     {
@@ -55,14 +50,10 @@ local M = {
     -- Utils
     {
         "folke/which-key.nvim",
-        keys = { "<leader>", "<c-r>", "<c-w>", "\"", "'", "`", "c", "v", "g" },
-        cmd = "WhichKey",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-        config = function(_, opts)
-            require("which-key").setup(opts)
+        keys = whichkey.keys,
+        cmd = whichkey.cmd,
+        config = function()
+            whichkey.setup()
         end,
         lazy = false
     },
@@ -73,18 +64,9 @@ local M = {
     },
     {
         "numToStr/Comment.nvim",
-        keys = {
-            { "gcc", mode = "n",          desc = "Comment toggle current line" },
-            { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
-            { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
-            { "gbc", mode = "n",          desc = "Comment toggle current block" },
-            { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-            { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
-        },
-        config = function(_, _opts)
-            require("Comment").setup({
-                pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-            })
+        keys = comment.keys,
+        config = function()
+            comment.setup()
         end,
     },
     {
@@ -160,22 +142,7 @@ local M = {
         "windwp/nvim-ts-autotag",
 
         config = function()
-            require('nvim-ts-autotag').setup({
-                opts = {
-                    -- Defaults
-                    enable_close = true,        -- Auto close tags
-                    enable_rename = true,       -- Auto rename pairs of tags
-                    enable_close_on_slash = false -- Auto close on trailing </
-                },
-                -- Also override individual filetype configs, these take priority.
-                -- Empty by default, useful if one of the "opts" global settings
-                -- doesn't work well in a specific filetype
-                per_filetype = {
-                    ["html"] = {
-                        enable_close = false
-                    }
-                }
-            })
+            require("configs.html_autotag")
         end,
 
         dependencies = {
@@ -186,15 +153,8 @@ local M = {
     },
     {
         "windwp/nvim-autopairs",
-        opts = {
-            fast_wrap = {},
-            disable_filetype = { "TelescopePrompt", "vim" },
-        },
-        config = function(_, opts)
-            require("nvim-autopairs").setup(opts)
-
-            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-            require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        config = function(_)
+            require("configs.brackets_autotag")
         end,
     },
 }
