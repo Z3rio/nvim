@@ -120,13 +120,16 @@ local M = {
             'williamboman/mason-lspconfig.nvim',
 
             -- Snippets
-            'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets'
         },
         branch = 'v3.x',
         config = function()
             require("configs.lsp")
         end,
+    },
+    {
+        "L3MON4D3/LuaSnip",
+        build = "make install_jsregexp"
     },
     {
         "windwp/nvim-ts-autotag",

@@ -48,6 +48,12 @@ local LspOpts = {
             "vue",
         },
     },
+    somesass_ls = {
+        filetypes = {
+            "scss",
+            "vue",
+        },
+    },
     volar = {
         init_options = {
             vue = {
@@ -70,7 +76,7 @@ require('mason-lspconfig').setup({
         "emmet_ls",
         "jsonls",
         "tailwindcss",
-
+        "somesass_ls"
     },
     handlers = {
         function(server_name)
