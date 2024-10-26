@@ -28,7 +28,7 @@ local LspOpts = {
             }
         }
     },
-    ts_ls = {
+    tsserver = {
         init_options = {
             plugins = {
                 {
@@ -67,7 +67,7 @@ local LspOpts = {
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {
-        'ts_ls',
+        'tsserver',
         'rust_analyzer',
         "lua_ls",
         "volar",
