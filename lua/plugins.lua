@@ -34,6 +34,14 @@ local M = {
 
     -- Utils
     {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
+        init = function()
+          require("ibl").setup()
+        end,
+    },
+    {
         "folke/which-key.nvim",
         keys = whichkey.keys,
         cmd = whichkey.cmd,
@@ -91,9 +99,6 @@ local M = {
         config = function()
             require("configs.fugitive")
         end
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-context"
     },
     {
         "folke/trouble.nvim",
