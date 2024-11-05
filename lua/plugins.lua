@@ -109,6 +109,7 @@ local M = {
     {
         'VonHeikemen/lsp-zero.nvim',
         dependencies = {
+            -- LSPs
             'neovim/nvim-lspconfig',
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
