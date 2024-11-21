@@ -21,7 +21,7 @@ local LspOpts = {
                     }
                 },
                 workspace = {
-                    library = require("nvchad_customdata").getPaths(),
+                    library = require("fivem_data").getPaths(),
                     maxPreload = 100000,
                     preloadFileSize = 10000,
                 }
