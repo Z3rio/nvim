@@ -113,7 +113,7 @@ local M = {
             'neovim/nvim-lspconfig',
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-            "Z3rio/NvChad-customdata",
+            "Z3rio/fivem-data.nvim",
 
             -- Autocompletion
             'hrsh7th/nvim-cmp',
